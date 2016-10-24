@@ -103,7 +103,7 @@ $(function () {
      */
    it('has an entry in feed container',function(done){
        /*making sure my .entry h2 has content in it*/
-       expect($('.entry h2')[0]).toBeDefined();
+       expect($('.entry h2')[0]).toBe();
        done();
    });
 
