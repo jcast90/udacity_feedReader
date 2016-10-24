@@ -1,5 +1,5 @@
 Check out the status of the feedReader at this link:  https://jcast90.github.io/udacity_feedReader/
-
+Thanks to the Udacity forums on this project! Helped explain things a bit more!
 
 # Project Overview
 
