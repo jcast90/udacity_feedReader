@@ -103,32 +103,32 @@ $(function () {
          */
         it('has an entry in feed container', function (done) {
             /*making sure my .entry h2 has content in it*/
-            expect($('.entry h2').length).not.toBe(0);
+            expect($('.entry h2').length).not.toBe([0]);
             done();
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection"*/
     describe('New Feed Selection', function () {
-     /*watching if the 2nd feed is loaded*/
-     var feed = $('.header-title').html();
-     beforeEach(function (done) {
-         loadFeed(0, function () {
-             loadFeed(1, function () {
-                 done();
-             });
-         });
-     });
+        /*watching if the 2nd feed is loaded*/
+        var feed = $('.header-title').html();
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                loadFeed(1, function () {
+                    done();
+                });
+            });
+        });
 
-     /* TODO: Write a test that ensures when a new feed is loaded
-      * by the loadFeed function that the content actually changes.
-      * Remember, loadFeed() is asynchronous.
-      */
-     it('content changes', function (done) {
+        /* TODO: Write a test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         * Remember, loadFeed() is asynchronous.
+         */
+        it('content changes', function (done) {
 
 
-         expect(feed[0]).not.toBe(feed[1]);
-         done();
+            expect(feed[0]).not.toBe(feed[1]);
+            done();
 
-     });
- });
+        });
+    });
 }());
