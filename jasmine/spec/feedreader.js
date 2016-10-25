@@ -35,7 +35,7 @@ $(function () {
         it('Url is defined', function () {
             /*loop through allfeeds URL making sure its defined and not empty*/
             allFeeds.forEach(function (feed) {
-                feedUrl = feed.url;
+                var feedUrl = feed.url;
                 expect(feedUrl).toBeDefined();
                 expect(feedUrl.length).not.toBe(0);
             });
@@ -79,49 +79,56 @@ $(function () {
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
-        it('changes visibility on icon click', function(){
+        it('is visible on icon click', function () {
             /*if else statement for if the menu-icon is clicked, change menu visibility*/
-            if($('a.menu-icon-link').click()){
-            expect($(document.body).hasClass('menu-hidden')).toBe(false);
-
-            }else{
-            expect($(document.body).hasClass('menu-hidden')).toBe(true);
-           }
+            $('a.menu-icon-link').click();
+            expect(document.body.className).not.toContain('menu-hidden');
+            $('a.menu-icon-link').click();
+            expect(document.body.className).toContain('menu-hidden');
         });
+
     });
     /* TODO: Write a new test suite named "Initial Entries" */
-    describe('Initial Entries',function(){
+    describe('Initial Entries', function () {
 
-   beforeEach(function(done){
-       loadFeed(0,done);
-   })
-    /* TODO: Write a test that ensures when the loadFeed
-     * function is called and completes its work, there is at least
-     * a single .entry element within the .feed container.
-     * Remember, loadFeed() is asynchronous so this test will require
-     * the use of Jasmine's beforeEach and asynchronous done() function.
-     */
-   it('has an entry in feed container',function(done){
-       /*making sure my .entry h2 has content in it*/
-       expect($('.entry h2')[0]).toBe();
-       done();
-   });
+        beforeEach(function (done) {
+            loadFeed(0, done);
 
- });
+        });
+        /* TODO: Write a test that ensures when the loadFeed
+         * function is called and completes its work, there is at least
+         * a single .entry element within the .feed container.
+         * Remember, loadFeed() is asynchronous so this test will require
+         * the use of Jasmine's beforeEach and asynchronous done() function.
+         */
+        it('has an entry in feed container', function (done) {
+            /*making sure my .entry h2 has content in it*/
+            expect($('.entry h2').length).not.toBe(0);
+            done();
+        });
+    });
     /* TODO: Write a new test suite named "New Feed Selection"*/
-    describe('New Feed Selection', function(){
-        beforeEach(function(done){
-            /*watching if the 2nd feed is loaded*/
-            loadFeed(1,done);
-        })
+    describe('New Feed Selection', function () {
+        /*watching if the 2nd feed is loaded*/
+        var feed = $('.header-title').html();
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                loadFeed(1, function () {
+                    done();
+                });
+            });
+        });
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('content changes',function(done){
-            /*targeting the 2nd feed element making sure it has content and changes with the loadFeed function*/
-            expect($('.header .header-title').html()).toBe('CSS Tricks');
+        it('content changes', function (done) {
+
+
+            expect(feed[0]).not.toBe(feed[1]);
             done();
-        })
+
         });
+    });
 }());
