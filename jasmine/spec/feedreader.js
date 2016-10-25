@@ -79,7 +79,7 @@ $(function () {
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
-        it('is visible on icon click', function () {
+        it('toggles visibility on icon click', function () {
             /*if else statement for if the menu-icon is clicked, change menu visibility*/
             $('a.menu-icon-link').click();
             expect(document.body.className).not.toContain('menu-hidden');
@@ -109,26 +109,26 @@ $(function () {
     });
     /* TODO: Write a new test suite named "New Feed Selection"*/
     describe('New Feed Selection', function () {
-        /*watching if the 2nd feed is loaded*/
-        var feed = $('.header-title').html();
-        beforeEach(function (done) {
-            loadFeed(0, function () {
-                loadFeed(1, function () {
-                    done();
-                });
-            });
-        });
+     /*watching if the 2nd feed is loaded*/
+     var feed = $('.header-title').html();
+     beforeEach(function (done) {
+         loadFeed(0, function () {
+             loadFeed(1, function () {
+                 done();
+             });
+         });
+     });
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
-        it('content changes', function (done) {
+     /* TODO: Write a test that ensures when a new feed is loaded
+      * by the loadFeed function that the content actually changes.
+      * Remember, loadFeed() is asynchronous.
+      */
+     it('content changes', function (done) {
 
 
-            expect(feed[0]).not.toBe(feed[1]);
-            done();
+         expect(feed[0]).not.toBe(feed[1]);
+         done();
 
-        });
-    });
+     });
+ });
 }());
