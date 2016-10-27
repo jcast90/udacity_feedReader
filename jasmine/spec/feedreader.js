@@ -73,8 +73,8 @@ $(function () {
             expect($feed).not.toBe($newFeed);
             done();
             /* checking to make sure the feed loads are different */
-            console.log($feed);
-            console.log($newFeed);
+            /*console.log($feed);
+            console.log($newFeed);*/
         });
     });
 }());
